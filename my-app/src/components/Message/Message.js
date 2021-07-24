@@ -1,19 +1,29 @@
 import './css/Message.css';
 
-// export const Message = (props) => {
+// Вариант 1
+// const Message = (props) => {
 //     return (
 //         <div className="MessageBlock">
 //             <p className="MessageText">{props.text}</p>
 //         </div>
 //     )
 // }
+// export default Message;
 
-function Message(props) {
-    return (
-        <div className="MessageBlock">
-            <p className="MessageText">{props.text}</p>
-        </div>
-    )
-}
+// Вариант 2
+// function Message(props) {
+//     return (
+//         <div className="MessageBlock">
+//             <p className="MessageText">{props.text}</p>
+//         </div>
+//     )
+// }
+// export default Message;
 
-export default Message;
+
+// Вариант 3
+export default props => (
+    <div className="MessageBlock">
+        <p className="MessageText">{props.text}</p>
+    </div>
+)

@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const myName = "Ildar";
-const myAge = 42;
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -2,8 +2,9 @@
 import './App.css';
 import Message from './components/Message/Message';
 
+const myText = "Привет, Ильдар!";
+
 function App() {
-  const myText = "Привет, Ильдар!";
   return (
     <div className="App">
       <header className="App-header">
