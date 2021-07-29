@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100200300400500600700800900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background-image: url("./../img/bg.jpeg");
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 900;
+  text-align: center;
+  padding: 2rem 0;
+  line-height: 2.3rem;
+}
+
+.MainWindow {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.ChatWindow {
+  width: 100%;
+  height: calc(100vh/1.5);
+  background-color: #3F3F46;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0 12px;
+  overflow-y: auto;
+}
+
+.ChatForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  margin-top: 18px;
+}
+
+.ChatText {
+  width: 100%;
+  padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+  border: 1px solid;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.ChatText:focus {
+  outline: none;
+}
+
+.ChatButton {
+  background-color: #000000;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.ChatButton:hover {
+  background-color: #121212;
+  cursor: pointer;
+}
+
+.ChatButton:active {
+  background-color: #242424;
+}
+
+.ScrollBarStyle::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 8px;
+  height: 0px;
+}
+
+.ScrollBarStyle::-webkit-scrollbar-track {
+  background-color: #777777;
+}
+
+.ScrollBarStyle::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #121212;
+}
+
+.ScrollBarStyle::-webkit-scrollbar-thumb:hover {
+  background-color: #000000;
+}
+
+.ScrollBarStyle::-webkit-resizer {
+  background-repeat: no-repeat;
+  width: 4px;
+  height: 20px;
+}
+
+.ScrollBarStyle::-webkit-scrollbar {
+  width: 6px;
+}

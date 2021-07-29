@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100200300400500600700800900&display=swap')
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Montserrat', sans-serif
+    font-size: 16px
+
+body
+    background-image: url("./../img/bg.jpeg")
+    height: 100vh
+
+h1
+    font-size: 3rem
+    color: #ffffff
+    font-weight: 900
+    text-align: center
+    padding: 2rem 0
+    line-height: 2.3rem
+
+.MainWindow
+    width: 100%
+    max-width: 400px
+    margin: 0 auto
+
+.ChatWindow
+    width: 100%
+    height: calc(100vh/1.5)
+    background-color: #3F3F46
+    border-radius: 0.5rem 0.5rem 0 0
+    padding: 0 12px
+    overflow-y: auto
+
+.ChatForm
+    width: 100%
+    display: flex
+    flex-wrap: nowrap
+    margin-top: 18px
+
+.ChatText
+    width: 100%
+    padding: 0.75rem 0.25rem 0.75rem 0.75rem
+    border: 1px solid
+    border-radius: 0.5rem 0 0 0.5rem   
+
+    &:focus
+        outline: none
+
+.ChatButton
+    background-color: #000000
+    border-radius: 0 0.5rem 0.5rem 0
+    padding: 0.5rem 1rem
+    border: none
+
+    &:hover
+      background-color: #121212
+      cursor: pointer
+    
+    &:active
+      background-color: #242424
+
+.ScrollBarStyle
+  &::-webkit-scrollbar-button
+    background-repeat: no-repeat
+    width: 8px
+    height: 0px
+
+  &::-webkit-scrollbar-track  //цвет дорожки по которой ездит ползунок
+    background-color: #777777
+
+  &::-webkit-scrollbar-thumb  // сам ползунок
+    -webkit-border-radius: 3px
+    border-radius: 3px
+    background-color: #121212
+    &:hover
+      background-color: #000000
+
+  &::-webkit-resizer
+    background-repeat: no-repeat
+    width: 4px
+    height: 20px
+
+  &::-webkit-scrollbar  //ширина полосы прокрутки
+    width: 6px
