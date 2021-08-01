@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { AUTHORS } from '../../constants';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { TextField } from '@material-ui/core';
 
 export const Form = (props) => {
     const onSendMessage = props.onSendMessage;
-    // const { onSendMessage } = props;
+    //тоже самое: const { onSendMessage } = props;
 
     const [value, setValue] = useState('');
 
@@ -13,22 +16,37 @@ export const Form = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSendMessage({
-            author: AUTHORS.human,
-            id: Date.now(),
-            text: value,
-        });
-        setValue('');
-    }
+        if (value !== '') { // Проверка на отправку не пустой строки
+            onSendMessage({
+                author: AUTHORS.human,
+                id: Date.now(),
+                text: value,
+            });
+            setValue('');
+        }
+    };    
 
     return (
         <form className="ChatForm" onSubmit={handleSubmit}>
-            <input type="text" className="ChatText" value={value} onChange={handleChange} />
-            <button type="submit" className="ChatButton">
+            <TextField className="ChatText" id="filled-basic" label="Filled" variant="filled" label="Введите текст" value={value} onChange={handleChange} />
+            {/* <input type="text" className="ChatText" value={value} onChange={handleChange} /> */}
+            <ButtonGroup variant="contained" aria-label="contained primary button group">
+                <Button type="submit" className="ChatButton" variant="contained" color="primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </Button>
+                {/* <Button variant="contained" color="secondary" onClick={resetMessageList}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 6L18 18M6 18L18 6L6 18Z" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </Button> */}
+            </ButtonGroup>
+            {/* <button type="submit" className="ChatButton">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 19L21 21L12 3L3 21L12 19ZM12 19V11" stroke="#3F3F46" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-            </button>
+            </button> */}
         </form>
     )
 }

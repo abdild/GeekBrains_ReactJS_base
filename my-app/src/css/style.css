@@ -24,17 +24,46 @@ h1 {
 
 .MainWindow {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .ChatWindow {
   width: 100%;
   height: calc(100vh/1.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.ChatList {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0 12px;
+  overflow-y: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.ChatMessages {
+  width: 350px;
+  height: 100%;
   background-color: #3F3F46;
   border-radius: 0.5rem 0.5rem 0 0;
   padding: 0 12px;
   overflow-y: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .ChatForm {
@@ -52,6 +81,7 @@ h1 {
   padding: 0.75rem 0.25rem 0.75rem 0.75rem;
   border: 1px solid;
   border-radius: 0.5rem 0 0 0.5rem;
+  background-color: #fff;
 }
 
 .ChatText:focus {
@@ -70,7 +100,7 @@ h1 {
   cursor: pointer;
 }
 
-.ChatButton:active {
+.ChatButton:hover:active {
   background-color: #242424;
 }
 
@@ -101,4 +131,9 @@ h1 {
 
 .ScrollBarStyle::-webkit-scrollbar {
   width: 6px;
+}
+
+.icons {
+  margin-right: 12px;
+  color: #5900ff;
 }
