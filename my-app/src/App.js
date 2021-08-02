@@ -48,15 +48,19 @@ function App() {
   }, [messages]);
 
 
-  const resetMessageList = useCallback(() => {
-    const newMessage = {
-      text: "Чат очищен!",
-      author: AUTHORS.robot,
-      id: Date.now(),
-    };
+  // const resetMessageList = useCallback(() => {
+  //   const newMessage = {
+  //     text: "Чат очищен!",
+  //     author: AUTHORS.robot,
+  //     id: Date.now(),
+  //   };
 
+  //   setMessages([messages, newMessage]);
+
+  // }, [messages]);
+
+  const resetMessageList = useCallback((newMessage) => {
     setMessages([messages, newMessage]);
-
   }, [messages]);
 
   const chats = [
@@ -80,7 +84,6 @@ function App() {
       <div className="MainWindow">
         <div className="ChatWindow">
           <div className="ChatList ScrollBarStyle">
-            {/* <SimpleList></SimpleList> */}
             <ChatList chats={chats}></ChatList>
           </div>
           <div>
@@ -90,12 +93,12 @@ function App() {
           </div>
         </div>
         <div className="ChatForm">
-          <Form onSendMessage={handleSendMessage} />
-          <Button className="ChatButton" variant="contained" color="secondary" onClick={resetMessageList}>
+          <Form onSendMessage={handleSendMessage} resetMessages={resetMessageList} />
+          {/* <Button className="ChatButton" variant="contained" color="secondary" onClick={resetMessageList}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 6L18 18M6 18L18 6L6 18Z" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </>
