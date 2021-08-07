@@ -1,5 +1,4 @@
 import './css/Message.css';
-import { useState } from 'react';
 
 // Вариант 1
 // const Message = (props) => {
