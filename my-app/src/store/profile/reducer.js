@@ -1,4 +1,4 @@
-import { PROFILE_TOGGLE_SHOW, PROFILE_DROP_NAME, PROFILE_CHECK } from "./actionTypes";
+import { PROFILE_TOGGLE_SHOW, PROFILE_DROP_NAME, PROFILE_SET_NAME, PROFILE_CHECK } from "./actionTypes";
 
 const initialState = {
     show: false,
@@ -17,7 +17,14 @@ export const profileReducer = (state = initialState, action) => {
         case PROFILE_DROP_NAME: {
             return {
                 ...state,
-                name: '',
+                name: "",
+            };
+        }
+        case PROFILE_SET_NAME: {
+            return {
+                ...state,
+                // name: action.name,
+                name: action.payload,
             };
         }
         case PROFILE_CHECK: {

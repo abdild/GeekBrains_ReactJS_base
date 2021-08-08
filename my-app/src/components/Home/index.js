@@ -5,6 +5,9 @@ import { Form } from '../Form';
 import { AUTHORS } from '../../constants';
 import { ChatList } from '../ChatsList';
 import { useParams } from 'react-router-dom';
+import { AddChat } from '../ChatsList/AddChat';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendMessage } from '../../store/chats/actions';
 
 const initialChats = {
     chat1: {
@@ -27,25 +30,29 @@ const initialChats = {
 function Home() {
     // console.log(props);
     // const { chatId } = match.params;
-    
+
     const { chatId } = useParams();
     // const chatId = props.match.params.chatId;    
     // const { chatId } = props.match.params; // тоже самое
 
     // const [messages, setMessages] = useState([]);
 
-    const [chats, setChats] = useState(initialChats);
+    // const [chats, setChats] = useState(initialChats);
+    const chats = useSelector(state => state.chats);
+    const dispatch = useDispatch();
 
     const handleSendMessage = useCallback((newMessage) => {
         // setMessages([...messages, newMessage]);
-        setChats({
-            ...chats,
-            [chatId]: {
-                ...chats[chatId],
-                messages: [...chats[chatId].messages, newMessage]
-            },
-        });
-    }, [chats, chatId]);
+
+        // setChats({
+        //     ...chats,
+        //     [chatId]: {
+        //         ...chats[chatId],
+        //         messages: [...chats[chatId].messages, newMessage]
+        //     },
+        // });
+        dispatch(sendMessage(chatId, newMessage));
+    }, [chatId]);
 
     useEffect(() => {
         // Если чат пустой (на старте), то отправляется приветственное сообщение
@@ -64,11 +71,11 @@ function Home() {
         if (
             !chatId ||
             !chats[chatId]?.messages.length ||
-                chats[chatId].messages[chats[chatId].messages.length - 1].author === AUTHORS.robot
+            chats[chatId].messages[chats[chatId].messages.length - 1].author === AUTHORS.robot
         ) {
             return;
         }
-        
+
 
         const timeout = setTimeout(() => {
             const newMessage = {
@@ -105,6 +112,7 @@ function Home() {
         <>
             <h1>Black Messenger</h1>
             <div className="MainWindow">
+                <AddChat />
                 <div className="ChatWindow">
                     <div className="ChatList ScrollBarStyle">
                         <span style={{ fontSize: 18, fontWeight: 700 }}>Список чатов</span>

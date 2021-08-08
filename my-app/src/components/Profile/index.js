@@ -1,80 +1,72 @@
-// import React from 'react';
-// import { store } from '../../store';
-// import { PROFILE_TOGGLE_SHOW } from "../../store/actionTypes";
-
-// export const Profile = () => {
-//     // const profileState = store.getState();
-//     // console.log(profileState);
-//     const profileState = useSelector((state) => state);
-//     const dispatch = useDispatch();
-
-//     const toggleShow = () => {
-//         dispatch({
-//             type: PROFILE_TOGGLE_SHOW,
-//         });
-//     };
-//     console.log(profileState);
-
-//     return (
-//         <>
-//             <div className="page404">THIS IS PROFILE PAGES</div>
-//             <button onClick={toggleShow}>TOGGLE show</button>
-//         </>
-
-//     )
-// };
-
 import React, { useState } from "react";
 import { store } from "../../store";
-import { PROFILE_CHECK, PROFILE_TOGGLE_SHOW } from "../../store/actionTypes";
+import { PROFILE_CHECK, PROFILE_SET_NAME, PROFILE_TOGGLE_SHOW } from "../../store/profile/actionTypes";
 import { useSelector, useDispatch } from "react-redux";
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
+import { TextField } from '@material-ui/core';
+import { changeName } from "../../store/profile/actions";
+import { selectName } from "../../store/profile/selectors";
 
 export const Profile = () => {
-    const profileState = useSelector((state) => state);
+    const profileState = useSelector((state) => state.profile);
+    // const name = useSelector((state) => state.name);
+    const name = useSelector(selectName);
     const dispatch = useDispatch();
 
-    const toggleShow = () => {
-        dispatch({
-            type: PROFILE_TOGGLE_SHOW,
-        });
+    const [value, setValue] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // dispatch({
+        //     type: PROFILE_SET_NAME,
+        //     // name: value,
+        //     payload: value,
+        // });
+        dispatch(changeName(value));
+        setValue('');
     };
-    
+
     const handleCheckPoint = () => {
         dispatch({
             type: PROFILE_CHECK,
         });
     };
 
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    }
+
     return (
         <>
-            <div className="page404">THIS IS PROFILE PAGES</div>
-            <button onClick={toggleShow}>TOGGLE show</button><div>
-                {/* <Checkbox
-                    checked={checked}
-                    onChange={handleChange}
-                    inputProps={{ 'aria-label': 'primary checkbox' }}
-                    label={<div className="page404">On</div>}
-                /> */}
-                <FormControlLabel style={{color: 'white'}}
-                    control={
-                        <Checkbox
-                            checked={profileState.checked}
-                            onChange={handleCheckPoint}
-                            // name="checkedB"
-                            color="primary"
-                            style ={{
-                                color: "#00e676",
-                              }}
-                        />
-                    }
-                    label={<Typography variant="h6" style={{ color: '#2979ff' }}>Check this checkbox</Typography>}
-                />
+            <h1>Black Messenger</h1>
+            <div className="MainWindow">
+                <div className="page404">THIS IS PROFILE OF {name}</div>
+                <form onSubmit={handleSubmit} className="ChatForm">
+                    <TextField className="ChatText" id="filled-basic" label="Filled" variant="filled" label="Введите имя" value={value} onChange={handleChange} />
+                    <Button onClick={handleSubmit} variant="contained" color="primary">Сохранить</Button>
+                    {/* <button onClick={handleSubmit}>Save name</button> */}
+                </form>
+                <div>
+                    <FormControlLabel style={{ color: 'white' }}
+                        control={
+                            <Checkbox
+                                checked={profileState.checked}
+                                onChange={handleCheckPoint}
+                                // name="checkedB"
+                                color="primary"
+                                style={{
+                                    color: "#00e676",
+                                }}
+                            />
+                        }
+                        label={<Typography variant="h6" style={{ color: '#2979ff' }}>Check this checkbox</Typography>}
+                    />
+                </div>
+                {profileState.checked && <div className="page404">Check</div>}
+                {/* {profileState.show && <div className="page404">THIS DEPENDS ON GLOBAL REDUX STATE</div>} */}
             </div>
-            {profileState.checked && <div className="page404">Check</div>}
-            {profileState.show && <div className="page404">THIS DEPENDS ON GLOBAL REDUX STATE</div>}
         </>
     );
 };

@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 export const ChatList = ({ chats }) => {
     const renderChatList = useCallback((chats) => (
         <Link className="ChatLink" to={`/home/${chats.id}`}>
-                <ChatIcon className="icons"></ChatIcon>
-                <ListItemText primary={chats.name} />
-            </Link>
+            <ChatIcon className="icons"></ChatIcon>
+            <ListItemText primary={chats.name} />
+        </Link>
     ), []);
 
     return Object.values(chats).map(renderChatList);
