@@ -1,5 +1,5 @@
 import { AUTHORS } from "../../constants";
-import { ADD_CHAT, SEND_MESSAGE } from "./actionTypes";
+import { ADD_CHAT, DELETE_CHAT, SEND_MESSAGE } from "./actionTypes";
 
 const initialState = {
     chat1: {
@@ -30,6 +30,11 @@ export const chatsReducer = (state = initialState, { type, payload }) => {
                     messages: [],
                 },
             };
+        }
+        case DELETE_CHAT: {
+          const newState = { ...state };
+          delete newState[payload];    
+          return newState;
         }
         case SEND_MESSAGE: {
             return {

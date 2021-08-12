@@ -3,14 +3,18 @@ import AddIcon from '@material-ui/icons/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { addChat } from '../../store/chats/actions';
 import { Button, IconButton, TextField } from '@material-ui/core';
+import { useInput } from '../../utils/useInput';
 
 export const AddChat = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState('');
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
+    // const [value, setValue] = useState('');
+
+    // const handleChange = (event) => {
+    //     setValue(event.target.value);
+    // };
+
+    const { value,handleChange, reset } = useInput('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,7 +25,8 @@ export const AddChat = () => {
 
         const newId = `chat-${Date.now()}`;
         dispatch(addChat(newId, value));
-        setValue('');
+        // setValue('');
+        reset();
     };
 
     return (

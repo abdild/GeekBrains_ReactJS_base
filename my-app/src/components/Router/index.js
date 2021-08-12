@@ -63,9 +63,15 @@ export const Router = () => {
                 <Route path="/profile">
                     <Profile />
                 </Route>
-                {/* <Route  path="/chats">
-                    <Chats />
-                </Route> */}
+                <Route path="/nochat">
+                    <h1>Black Messenger</h1>
+                    <div className="MainWindow">
+                        <div className="page404">
+                            <span style={{ fontSize: 20 }}>Несуществующий чат</span>
+                            <Link to="/home">На главную</Link>
+                        </div>
+                    </div>
+                </Route>
                 <Route path='*'>
                     <h1>Black Messenger</h1>
                     <div className="MainWindow">

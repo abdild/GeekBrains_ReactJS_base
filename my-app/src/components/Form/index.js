@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { TextField } from '@material-ui/core';
 import { AddChat } from '../ChatsList/AddChat';
+import { useInput } from '../../utils/useInput';
 
 export const Form = (props) => {
     const onSendMessage = props.onSendMessage;
@@ -11,27 +12,29 @@ export const Form = (props) => {
 
     const resetMessages = props.resetMessages;
 
-    const [value, setValue] = useState('');
+    // const [value, setValue] = useState('');
 
     const inputRef = useRef();
     useEffect(() => {
         inputRef.current.focus();
     }, [inputRef]);
 
+    const { value, handleChange, reset } = useInput('');
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     setValue(event.target.value);
+    // };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (value !== '') { // Проверка на отправку не пустой строки
             onSendMessage({
-                author: AUTHORS.human,
+                // author: AUTHORS.human,
                 id: Date.now(),
                 text: value,
             });
-            setValue('');
+            // setValue('');
+            reset();
         }
     };
 
@@ -43,7 +46,6 @@ export const Form = (props) => {
             id: Date.now(),
         });
     };
-
 
     return (
         <>

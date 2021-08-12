@@ -46,7 +46,6 @@ export const Profile = () => {
                 <form onSubmit={handleSubmit} className="ChatForm">
                     <TextField className="ChatText" id="filled-basic" label="Filled" variant="filled" label="Введите имя" value={value} onChange={handleChange} />
                     <Button onClick={handleSubmit} variant="contained" color="primary">Сохранить</Button>
-                    {/* <button onClick={handleSubmit}>Save name</button> */}
                 </form>
                 <div>
                     <FormControlLabel style={{ color: 'white' }}
@@ -65,7 +64,6 @@ export const Profile = () => {
                     />
                 </div>
                 {profileState.checked && <div className="page404">Check</div>}
-                {/* {profileState.show && <div className="page404">THIS DEPENDS ON GLOBAL REDUX STATE</div>} */}
             </div>
         </>
     );
