@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
+import { AUTHORS } from '../../constants';
+import { selectName } from '../../store/profile/selectors';
 import './css/Message.css';
-import { useState } from 'react';
 
 // Вариант 1
 // const Message = (props) => {
@@ -52,10 +54,13 @@ import { useState } from 'react';
 //         </div>)
 // )
 
-export const Message = ({ text, author, id }) => (
-    <div className="MessageBlock">
-        <div className="MessageSubText">{author} {id}</div>
+export const Message = ({ text, author, id }) => {
+    const name = useSelector(selectName);
+    return (
+        <div className="MessageBlock">
+        <div className="MessageSubText">{author === AUTHORS.human ? name : author} {id}</div>
         <p className="MessageText">{text}</p>
     </div>
-);
+    )    
+};
 
