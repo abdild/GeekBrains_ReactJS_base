@@ -4,9 +4,11 @@ import React from "react";
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import Home from "../Home";
 import { Profile } from "../Profile";
+import { News } from "../News";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import RestoreIcon from '@material-ui/icons/Chat';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -28,9 +30,10 @@ export const Router = () => {
                 }}
                 showLabels
                 className={classes.root}>
-                <Link to="/home"><BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} /></Link>
-                <Link to="/profile"><BottomNavigationAction label="Profile" value="profile" icon={<PersonIcon />} /></Link>
-                <Link to="/chats"><BottomNavigationAction label="Chats" value="chats" icon={<RestoreIcon />} />chats</Link>
+                <Link to="/home"><BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />Home</Link>
+                <Link to="/profile"><BottomNavigationAction label="Profile" value="profile" icon={<PersonIcon />} />PROFILE</Link>
+                <Link to="/chats"><BottomNavigationAction label="Chats" value="chats" icon={<RestoreIcon />} />CHATS</Link>
+                <Link to="/news"><BottomNavigationAction label="News" value="news" icon={<ChromeReaderModeIcon />} />NEWS</Link>
             </BottomNavigation>
 
             {/* <ul>
@@ -62,6 +65,9 @@ export const Router = () => {
                 </Route>
                 <Route path="/profile">
                     <Profile />
+                </Route>
+                <Route path="/news">
+                    <News />                
                 </Route>
                 <Route path="/nochat">
                     <h1>Black Messenger</h1>

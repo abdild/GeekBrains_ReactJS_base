@@ -6,6 +6,7 @@ import storage from "redux-persist/lib/storage";
 import { chatsReducer } from './chats/reducer';
 import { middleware } from './middlewares';
 import { profileReducer } from './profile/reducer';
+import { articlesReducer } from './articles/reducer';
 
 const persistConfig = {
   key: 'Black messenger',
@@ -15,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   chats: chatsReducer,
   profile: profileReducer,
+  articles: articlesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
