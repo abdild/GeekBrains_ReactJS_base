@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AddChat } from './AddChat';
 import { ChatItem } from './ChatItem';
 
-export const ChatList = ({ chats, onDeleteChat }) => {
+export const ChatList = ({ chats, onDeleteChat, onAddChat }) => {
     return (
       <>
         <List>
@@ -17,6 +17,9 @@ export const ChatList = ({ chats, onDeleteChat }) => {
               onDelete={onDeleteChat}
             />
           ))}
+          {/* <ListItem>
+            <AddChat onAddChat={onAddChat} />
+          </ListItem> */}
         </List>
       </>
     );

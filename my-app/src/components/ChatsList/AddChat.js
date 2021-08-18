@@ -5,7 +5,7 @@ import { addChat } from '../../store/chats/actions';
 import { Button, IconButton, TextField } from '@material-ui/core';
 import { useInput } from '../../utils/useInput';
 
-export const AddChat = () => {
+export const AddChat = ({ onAddChat }) => {
     const dispatch = useDispatch();
 
     // const [value, setValue] = useState('');
@@ -24,7 +24,8 @@ export const AddChat = () => {
         };
 
         const newId = `chat-${Date.now()}`;
-        dispatch(addChat(newId, value));
+        // dispatch(addChat(newId, value));
+        onAddChat(newId, value);
         // setValue('');
         reset();
     };
