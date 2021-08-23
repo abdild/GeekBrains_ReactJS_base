@@ -1,11 +1,11 @@
 import { REQUEST_PENDING, REQUEST_ERROR, REQUEST_SUCCESS } from "./actionTypes";
 import { API_URL } from "../../constants";
 
-const getArticlesPending = () => ({
+export const getArticlesPending = () => ({
   type: REQUEST_PENDING,
 });
 
-const getArticlesSuccess = (articles) => ({
+export const getArticlesSuccess = (articles) => ({
   type: REQUEST_SUCCESS,
   payload: articles,
 });

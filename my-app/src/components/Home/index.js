@@ -95,10 +95,10 @@ function Home() {
         dispatch(deleteChat(id));
     }, []);
 
-    if (!!chatId && !messages[chatId]) {
-        // return <Redirect to="/nochat" />
-        history.replace('/nochat');
-    };
+    // if (!!chatId && !messages[chatId]) {
+    //     // return <Redirect to="/nochat" />
+    //     history.replace('/nochat');
+    // };
 
     return (
         <>

@@ -16,8 +16,6 @@ import { PrivateRoute } from '../../hocs/PrivateRoute';
 import { PublicRoute } from '../../hocs/PublicRoute';
 import { Login } from "../Login";
 
-
-
 const useStyles = makeStyles({
     root: {
         width: '100%',
