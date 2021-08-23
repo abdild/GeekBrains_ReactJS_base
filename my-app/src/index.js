@@ -5,6 +5,10 @@ import './css/style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { initFB } from './services/firebase';
+
+initFB();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
